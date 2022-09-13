@@ -1,25 +1,247 @@
 ---
-title: "AEPF_Rezeption"
-author: "Sarah Bez"
-format: revealjs
-editor: visual
+title: "Der Durchschnitt ist gleich, aber die Verteilung ganz anders"
+author: "Sarah Bez, Samuel Merk"
+subtitle: "Wie Lehrpersonen Notenverteilungen rezipieren"
+format: 
+  revealjs:
+    title-slide-attributes:
+      data-background-image: img/sash.svg
+      data-background-size: 30%
+      data-background-position: 0 0
+    slide-number: true
+    controls: true
+    logo: https://drive.google.com/uc?export=view&id=1Eoy1slqV_DDgG50f3V6tc6QvFnhCBE1H
+    theme: [dark, css/custom.scss]
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 3
+      buttons: true
+      chalk-effect: 0
+    fullscreen: true
+    pdfexport: true
+bibliography: references.bib
+editor_options: 
+  chunk_output_type: console
 ---
 
-## Quarto test
+```{r hidden chunk which creates template stuff}
+#| echo: false
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+library(fontawesome)
+library(tidyverse)
+# Change css to lecker PH green
+if(!dir.exists("css"))
+dir.create("css")
+fileConn<-file("css/custom.scss")
+writeLines(c("/*-- scss:defaults --*/",
+             "$link-color: #8cd000 !default;"), fileConn)
+close(fileConn)
 
-## Bullets
-
-When you click the **Render** button a document will be generated that includes:
-
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+# create sash with URL
+sash <- 
+  ggplot() + 
+  geom_polygon(data = tibble(x = c(0,4,5.5,0),
+                             y = c(1,5,5,-.5)),
+               aes(x,y), fill = "#8cd000") + 
+  coord_fixed() +
+  annotate(geom = "text", 
+           label = "einfügen", 
+           x = .8, y = .8, 
+           angle = 45,
+           hjust = 0, vjust = 0,
+           size = 10,
+           color = "white",
+           family="Courier") +
+ theme_void() + 
+ theme(plot.margin = margin(-2,0,0,-12, unit = "cm"))
+ggsave("img/sash.svg", sash)
 ```
+
+```{css}
+.imp {
+  color: #8cd000;
+}
+
+div.callout-note {
+    border-left-color: #8cd000 !important;
+}
+
+div.callout-note.callout-style-default .callout-caption {
+    background-color: #acff00b0;
+}
+```
+
+<center>
+
+<br> \
+<br>
+
+<center>
+
+<br> [{{< fa book-open >}}]{.imp} Warum Fokus Rezeption?\
+<br>
+
+<center>
+
+<center>[{{< fa magnifying-glass >}}]{.imp} Erfassung Rezeption</center>
+
+::: footer
+Slides: Link aktualisieren
+:::
+
+## <!-- Theo Mot--> {auto-animate="true"}
+
+::: {style="margin-top: 300px; font-size: 1.5em; color:#8cd000; margin-left: 110px;"}
+[Warum Fokus Rezeption? {{< fa book-open >}}]{.imp}
+:::
+
+::: footer
+Slides: Link aktualisieren
+:::
+
+## <!-- Warum Fokus Rezeption?--> {.smaller auto-animate="true"}
+
+::: {style="margin-top: 0px;font-size: 1.5em; color:#ffffff; margin-left: 0px;"}
+Warum Fokus Rezeption? [{{< fa book-open >}}]{.imp}
+:::
+
+. . .
+
+Verschiedene theoretische Modelle konzeptualisieren DBDM als einen zyklisch-sequenziellen Prozess [z.B. @helmke2005; @mandinach2016a; @marsh2012; @schildkamp2019a] <br><br>
+
+::: r-stack
+![](img/Helmke.png){.fragment width="450"}
+
+![](img/Mandinach.png){.fragment width="420"}
+
+![](img/Schildkamp.png){.fragment width="351"}
+
+![](img/Marsh.png){.fragment width="410"}
+:::
+
+
+::: footer
+Slides: Link aktualisieren
+:::
+
+---
+
+::: {style="margin-top: 0px;font-size: 1.5em; color:#ffffff; margin-left: 0px;"}
+Warum Fokus Rezeption? [{{< fa book-open >}}]{.imp}
+:::
+
+::: incremental
+* adäquate Rezeption als notwendige Bedingung für darauffolgende Schritte im Prozess datengestützter Entscheidungen   
+* Wie können Rezeptionsprozesse von Lehrpersonen erfasst werden ...  
+    * ... ergänzend zu Selbstauskünften und Data literacy-Tests? 
+    * ... stärker an alltäglichen Situationen von Lehrpersonen orientiert?   
+:::
+
+## <!-- Erfassung Rezeption--> {auto-animate="true"}
+
+::: {style="margin-top: 262px;font-size: 1.5em; color:#8cd000; margin-left: 110px;"}
+Erfassung Rezeption {{< fa magnifying-glass >}}
+:::
+
+## <!-- Erfassung Rezeption--> {.smaller auto-animate="true"}
+
+::: {style="margin-top: 0px;font-size: 1.5em; color:#ffffff; margin-left: 0px;"}
+Erfassung Rezeption {{< fa magnifying-glass >}}
+:::
+
+. . .
+
+> In dieser Studie wurde untersucht, wie Lehrpersonen artifizielle Notenverteilungen wahrnehmen.
+
+. . .
+
+-   Proband:innen {{< fa users >}}
+    -   $N = 47$ Lehrpersonen
+    -   $M_{Alter} = 37.5$, $SD_{Alter} = 9.4$
+    -   $M_{Expertise\;(Jahre)} = 9.8$, $SD_{Expertise\;(Jahre)} = 9.2$
+    -   30 {{< fa venus >}}
+
+---
+
+::: {style="margin-top: 0px;font-size: 1.5em; color:#ffffff; margin-left: 0px;"}
+Rezeption statistischer Entitäten {{< fa magnifying-glass >}}
+:::
+
+::: incremental
+-   Design
+    -   Explorative Think-aloud-Studie
+    -   "Critical friend"-Framing\
+    -   **"Lautes Denken" während der Nutzung eines interaktiven Dashboards mit artifiziellen Notenverteilungen**
+:::
+
+##  {background-iframe="https://apps.samuel-merk.de/Kollegiale_Dateninterpretation" background-interactive="true"}
+
+## Ratingprozess der Think-Aloud-Protokolle und Screencasts {.smaller}
+
+![Ratings durch 2 geschulte Personen auf der Basis eines deduktiv-induktiv entwickelten Schemas (Krippendorffs *α* \>.63, Schiefe: *α* =.41), Konsensurteile wurden durchgeführt.](img/screenshot_rating_tpod2.png)
+
+## <!-- Ergebnisse--> {auto-animate="true"}
+
+::: {style="margin-top: 262px;font-size: 3.5em; color:#8cd000; margin-left: 110px;"}
+Ergebnisse {{< fa chart-column >}}
+:::
+
+## <!-- Ergebnisse--> {auto-animate="true"}
+
+::: {style="margin-top: 0px;font-size: 1.5em; color:#ffffff; margin-left: 0px;"}
+Ergebnisse {{< fa chart-column >}}
+:::
+
+![](img/TPOD_2_statistical%20entities%20described%20in%20TA.png)
+
+## Personen-zentrierte Analyse
+
+::: incremental
+-   Explorative Analysen mit verschiedenen hierarchischen Clusteralgorithmen\
+-   Visuelle Inspektion auf der Basis der entsprechenden Heatmaps und Dendrogrammen\
+:::
+
+------------------------------------------------------------------------
+
+##  {background-image="img/heatmap_study2.png" background-size="contain"}
+
+## Diskussion {.smaller}
+
+::: incremental
+-   zentrale Ergebnisse
+    -   Lehrpersonen nehmen Streuung hauptsächlich unspezifisch oder im Sinne des Wertebereichs wahr, aber nicht als (durchschnittlicher) Abstand zum Mittelwert\
+    -   Deutliche between-person Varianz\
+-   nächste Schritte
+    -   Personen-zentrierte Analysen mit Scores aus einem Data literacy-Test (Assoziation Test-Performanz?)\
+-   Limitationen  
+    - Gelegenheitsstichprobe  
+    - Fokus auf statistische Entitäten in artifiziellen Daten  
+    - Welche Schlussfolgerungen kann man auf der Basis von Think-Aloud-Studien ziehen? [@leighton2017]
+:::
+
+## Diskussion {.smaller}
+
+::: incremental
+-   nächste Forschungsfragen  
+    -   Mit welchen Datenverteilungen sind Lehrpersonen bei ihren alltäglichen datengestützten Entscheidungen konfrontiert?  
+    -   Welche Teilprozesse von Data literacy können mit Think-Aloud-Studien (nicht) angemessen erfasst werden?  
+-   generell
+    -   gelingende Datenrezeption ist notwendig aber nicht hinreichend für gelingende datengestützte Entscheidungen (→ konzeptuelle Modelle)
+    -   Wie kann eine gelingende Interaktion von Mensch und Technologie aussehen? [@mandinach2021]
+:::
+
+##  {.center}
+
+::: {.fragment .highlight-green}
+<center><font style='font-size:5em'>{{< fa comments >}}</font><br> <font style='font-size:1.3em'>Herzlichen Dank für Ihre Aufmerksamkeit! </font></center>
+:::
+
+::: {.callout-note icon="false"}
+## Kontakt:
+
+{{< fa envelope >}} sarah.bez@uni-tuebingen.de
+
+{{< fa envelope >}} samuel.merk@ph-karlsruhe.de
+:::
+
+## References {.smaller}
